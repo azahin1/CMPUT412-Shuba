@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuba's Journey</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <h1>Exercise 1: Basic Development</h1>
+    <h6>Link to the Repo: </h6>
+    <hr/>
+
+    <h3>Connecting and Operating</h3>
+    <p>
+        This exercise was an introduction to use the duckietown, duckiebot, and docker.
+        Firstly I tried to connect to the bot with my laptop and tried to make it move, and see what its camera sees. 
+        But that's just connecting to the bot. To do automation and other programming, I needed to calibrate the cameras and the wheels.
+        <img src="lab1/motor and camera.png">
+        Oh wow look at that, the dashboard of the bot to see what the bot sees and how its wheels work.
+    </p>
+
+    <video controls>
+        <source src="lab1/streight line.mp4" type="video/mp4">
+    </video>
+    <p>
+        Oh wow look at that, a video showing how streight it goes... but that took so long. The bot seems to change how it works from time to time.
+        That's why I had to recalibrate over and over again to finally get a streight line.
+    </p>
+
+    <p>
+        To connect to the bot, I also need to know a bit of networking.
+        Getting my laptop and the bot's MAC address was a part of it along with connecting to the system of the bot vis SSH.
+    </p>
+    <p>
+        After that, a basic knowledge of Docker was needed to make the line following work. But as the setup was compleate, I could run the line following very effectively.
+    </p>
+    <video controls>
+        <source src="lab1/line follow.mp4" type="video/mp4">
+    </video>
+    
+    <hr/>
+    <h3>Basic Development</h3>
+    <p>
+        For development, of course Git and Github is required. To develop docker images and uploading them to dockerhub with python, a place to start is needed.
+        Thankfully duckiebots are open source and available in Github. Forking that repository and using it as a base to run code from the bot was a perfect start.
+    </p>
+    <p>
+        However, problems arose imediately when running Hello World through the bot. As seen below in the images, I could develop the package, create an image locally, and run it.
+        <img src="lab1/local image run.png">
+        But as soon as I tried to create the image from the bot using Docker, errors constantly popped up.
+    </p>
+    <p>
+        To get to the root of the problem, I SSHed into the duckiebot and tried to log in to Docker. It failed. So I pinged Google to see if it was connected to the network. It was.
+        So the problem was Docker. So I uninstalled and re-installed Docker, and it worked back up again.
+        <img src="lab1/docker problem.png">
+        At the end, the image was made, and able to work properly.
+        <img src="lab1/bot image run.png">
+    </p>
+    <p>
+        Then I tried to do some colour detection with the camera, but the credentials in the examples seemed to be off and it didn't work with anything.
+        At this point, I ran out of time for the exercise so this part I couldn't finish.
+    </p>
+
+    <hr/>
+    <h6 style="text-align: right">
+        Website made by Github Pages, CSS by HTML5 up
+    </h6>
+</body>
+</html>
