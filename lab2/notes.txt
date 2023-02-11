@@ -1,0 +1,7 @@
+For lab 2, we ran into a major networking issue that we still haven't gotten around. Due to this, we could not finish the lab as both of our duckiebots refused to ping its dashboard.
+
+This issue is persistant and inconsistant. One day we can ping it perfectly fine, but the next day it will not connect. Because of this, about 60% of our lab time was used on trying to ping the dashboard, failing, restarting the bot, and pinging again to see if it would connect.
+
+Access to the dashboard was nessesry because building and running images uses the command `dts devel build -f -H $BOT.local` where $BOT.local is the dashboard's URL that connects my computer to the bot via wifi. Both my laptop and duckiebot are connected to the duckienet wifi address. Both my laptop and the duckiebot can ping to google.com meaning the wifi is working. However, trying to ping $BOT.local fails. This suggested that the dashboard was sometimes (in this case about 60% of the time) not ready when the bot was ready.
+
+We managed to ping google by attaching an eithernet cable to the bot and SSHing into it. This does not require the dashboard to be up.
