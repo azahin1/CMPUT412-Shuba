@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuba's Journey</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <h1>Exercise 1: ROS development and Kinematics</h1>
+    <h6><a href="https://github.com/azahin1/CMPUT412-lab1">Link to the lab2 repository</a></h6>
+    <hr/>
+
+    <h3>Connecting and Operating</h3>
+    <p>
+        In this exercise, we were to learn about ROS and use it to have the duckiebot do a task.
+        Namely, move in a square of side length 1.25 m, and move from the same start and end point as the square but as a circle.
+    </p>
+
+    <h3>ROS Concepts</h3>
+    The main concepts learned in this lab has to do with ROS and how it works. The main 5 of them are:
+    <ul>
+        <li><b>Processes:</b> that perform computation and connect other nodes to create a modular system.</li>
+        <li><b>Messages:</b> Nodes communicate with each other through messages which is a data structure. These are how nodes connect to each other.</li>
+        <li><b>Topics:</b> Messages that can be sent or received from nodes through a system called a topic. There are 2 types of topics.
+            Publishers that are topics that send message to nodes.
+            Subscribers that are topics that get messages from nodes.</li>
+        <li><b>Services:</b> These are a group of topics that we can use to request or reply to interactions.</li>
+        <li><b>Bags:</b> A way to save and play back ROS message data including data for sensors.</li>
+    </ul>
+
+    <h3>Making Our Own Topics</h3>
+    <p>
+        We then used the ROS concepts to build a topic that subscribes to the camera and publishes that data to view the image similar to how the [rqt_image_view] command works.
+        <img src="lab2/image code.png">
+        As shown in the figure above, we created a subscriber, but did not get to the publisher part due to problems explained in the issues section. 
+    </p>
+
+    <h3>Questions</h3>
+    <p>
+        <b>What is the difference between your initial robot frame and world frame? How do you transform between them?</b>
+        <br>The world frame is the given point (0.32, 0.32) and θ = π/2 that is set up in CSC229, whereas the robot frame is (x,y,θ) = 0. To transform between the frames, we use the equation: 
+        <img src="lab2/equation.png">
+    </p>
+
+    <p>
+        <b>How do you convert the location and theta at the initial robot frame to the world frame?</b>
+        <br>We counted the ticks from the duckiebot's left and right wheels from a starting tick.
+        Each tick is 1/135 of a full rotation so we were able to use that and the given radius = 0.0318 m to get the location in meters.
+    </p>
+
+    <p>
+        <b>Can you explain why there is a difference between actual and desired location?</b>
+        <br>There can be several factors affecting the actual location and desired location.
+        The two main reasons for this difference is due to slipping, and hardware to software communication of counting ticks.
+        A contaminated driving surface can lead to the bot slipping and missing ticks where there should have been.
+        There could also be error in the tick counter integrated into the bot leading to inacurate distance measurements. 
+    </p>
+
+    <p>
+        Due to problems explained in the issues section, the remaining questions we could not finish.
+    </p>
+
+    <h3>Issues</h3>
+    <p>
+        There were quite a lot of problems in this lab due to networking problems and failing to connect to the bot.
+        In the total 3 weeks allocated time that we got to work on this lab, we only managed to be able to work on it for about 5 hours.
+        Due to this, we could not finish the lab as me and my lab partner's duckiebots refused to ping its dashboard.
+    </p>
+
+    <p>
+        This issue is persistent and inconsistent. One day we can ping its dashboard perfectly fine, but the next day it will not connect.
+        Because of this, most of our lab time was spent on trying to ping the dashboard, failing, restarting the bot, and pinging again to see if it would connect.
+    </p>
+
+    <p>
+        At first we believed the issue was with the wifi connection as there has been problems with it in this lab for all the groups.
+        This is why this lab was extended for everyone for a week. However, after the connection was fixed, our bots did not have a connection to the dashboard.
+    </p>
+
+    <p>
+        Access to the dashboard was necessary because building and running images uses the command [dts devel build -f -H $BOT.local]
+        where $BOT.local is the dashboard's URL that connects my computer to the bot via wifi. Both my laptop and duckiebot are connected to the duckienet wifi address.
+        Both my laptop and the duckiebot can ping to google.com meaning the wifi is working. However, trying to ping $BOT.local fails.
+        This suggested that the dashboard was sometimes not ready when the bot was ready.
+    </p>
+    
+    <video controls>
+        <source src="lab2/no pings.mp4" type="video/mp4">
+    </video>
+    <img src="lab2/no pings.png">
+    
+    <p>
+        The given screenshot and video shows that our bots were connected to duckienet, and our computers could check the fleet, but our bots weren't showing up because we couldn't get access to its dashboard.
+        We managed to ping google by attaching an ethernet cable to the bot and SSHing into it.
+        This does not require the dashboard to be up. Due to this we as a collective decided to not continue further with this lab as it was very
+        frustrating and we have spent quite a lot of time trying to figure out the problem. 
+    </p>
+
+    <h3>References</h3>
+    <ul>
+        <li><a href="http://wiki.ros.org/differential_drive">http://wiki.ros.org/differential_drive</a></li>
+        <li><a href="http://wiki.ros.org/">http://wiki.ros.org/</a></li>
+        <li><a href="http://docs.ros.org/en/melodic/api/rospy/html/rospy.topics.Subscriber-class.html">http://docs.ros.org/en/melodic/api/rospy/html/rospy.topics.Subscriber-class.html</a></li>
+    </ul>
+    <hr/>
+    <h6 style="text-align: right">
+        Website made by Github Pages, CSS by HTML5up
+    </h6>
+</body>
+</html>
